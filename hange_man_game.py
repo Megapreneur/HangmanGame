@@ -1,18 +1,25 @@
 import random
+from hangman_art import stages, logo
+from hangman_words import word_list
 
-word_list = ["python", "java", "javascript", "golang", "kotlin", "react", "angular", "vue", "springboot", "maven"]
+# word_list = ["python", "java", "javascript", "golang", "kotlin", "react", "angular", "vue", "springboot", "maven"]
+
+
+print(logo)
+end_of_game = False
+lives = len(stages) - 1
+
 
 random_word = random.choice(word_list)
 
-lives = 6
 
 display = []
+
 word_length = len(random_word)
 for _ in range(word_length):
     display += "_"
 print(display)
 
-end_of_game = False
 
 while not end_of_game:
     guess_word = input("Guess the word: ").lower()
@@ -37,5 +44,7 @@ while not end_of_game:
     if "_" not in display:
         end_of_game = True
         print("You win.")
+
+    print(stages[lives])
 
 
